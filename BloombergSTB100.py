@@ -117,3 +117,13 @@ config: list = load_cfg()
 keyboard.on_press(on_press)
 print("[OK] Listening for key presses. Press 'esc' to quit.")
 tray()
+
+if __name__ == "__main__":
+    try:
+        config: list = load_cfg()
+        keyboard.on_press(on_press)
+        print("[OK] Listening for key presses. Press 'esc' to quit.")
+        tray()
+    except Exception as e:
+        with open("error.log", "w") as f:
+            f.write(str(e))

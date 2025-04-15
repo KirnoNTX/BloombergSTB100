@@ -1,0 +1,22 @@
+[
+    {
+        "press_key": "f14",
+        "run_action": "media previous"
+    },
+    {
+        "press_key": "f16",
+        "run_prog": "code.exe"
+    },
+    {
+        "press_key": "f18",
+        "run_action": "play/pause media"
+    },
+    {
+        "press_key": "f22",
+        "run_action": "media next"
+    },
+    {
+        "press_key": "PAUSE",
+        "run_action": "windows+l"
+    }
+]
