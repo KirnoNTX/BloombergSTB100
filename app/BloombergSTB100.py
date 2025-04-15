@@ -42,12 +42,14 @@ def load_cfg() -> list:
         return []
 
 def run_action(action: str) -> None:
+    if not action:
+        print("[SKIP] Empty action, skipping.")
+        return
     try:
-        print(f"[OK] Executing action: {action}")
-        keyboard.press_and_release(action)
-    except ValueError:
-        print(f"[FAIL] Invalid key, writing text instead: {action}")
-        keyboard.write(action)
+        print(f"[OK] Sending action: {action}")
+        keyboard.send(action)
+    except Exception as e:
+        print(f"[FAIL] Failed to send action '{action}': {e}")
 
 def run_prog(path: str) -> None:
     try:
@@ -60,23 +62,27 @@ def run_prog(path: str) -> None:
 def on_press(event) -> None:
     print(f"[OK] Key pressed: {event.name}")
     for item in config:
-        print(f"[OK] Checking config: {item}")
-        if event.name == item['press_key']:
-            print(f"[OK] Matching key found: {item['press_key']}")
-            if 'run_prog' in item:
-                print(f"[OK] Launching specified program: {item['run_prog']}")
-                run_prog(item['run_prog'])
-            elif 'run_action' in item:
-                if 'programme_fenêtre_en_cours' in item:
+        if event.name == item.get("press_key"):
+            print(f"[OK] Matching key found: {event['press_key']}")
+            action = item.get("run_action", "")
+            prog = item.get("run_prog", "")
+            
+            if prog:
+                print(f"[OK] Launching program: {prog}")
+                run_prog(prog)
+            elif action:
+                if item.get("programme_fenêtre_en_cours"):
                     proc = get_proc()
-                    if proc and proc.lower() == item['programme_fenêtre_en_cours'].lower():
-                        print(f"[OK] Active process match: {item['programme_fenêtre_en_cours']}")
-                        run_action(item['run_action'])
+                    if proc and proc.lower() == item["programme_fenêtre_en_cours"].lower():
+                        print(f"[OK] Active process match: {proc}")
+                        run_action(action)
                     else:
                         print(f"[FAIL] Active process mismatch: {proc} != {item['programme_fenêtre_en_cours']}")
                 else:
-                    print("[OK] No specific process required, executing action...")
-                    run_action(item['run_action'])
+                    print(f"[OK] Executing action: {action}")
+                    run_action(action)
+            else:
+                print("[SKIP] No action or program defined.")
             break
 
 def tray_img(w: int, h: int, c1: str, c2: str) -> Image.Image:

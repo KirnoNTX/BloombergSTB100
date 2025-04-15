@@ -5,7 +5,7 @@
     },
     {
         "press_key": "f14",
-        "run_action": "previous media"
+        "run_action": "media previous"
     },
     {
         "press_key": "f15",
@@ -37,7 +37,7 @@
     },
     {
         "press_key": "f22",
-        "run_action": "next media"
+        "run_action": "media next"
     },
     {
         "press_key": "f23",
