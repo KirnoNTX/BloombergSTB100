@@ -1,0 +1,50 @@
+[
+    {
+        "press_key": "f13",
+        "run_action": ""
+    },
+    {
+        "press_key": "f14",
+        "run_action": "previous media"
+    },
+    {
+        "press_key": "f15",
+        "run_action": ""
+    },
+    {
+        "press_key": "f16",
+        "run_prog": "code.exe"
+    },
+    {
+        "press_key": "f17",
+        "run_action": ""
+    },
+    {
+        "press_key": "f18",
+        "run_action": "play/pause media"
+    },
+    {
+        "press_key": "f19",
+        "run_action": ""
+    },
+    {
+        "press_key": "f20",
+        "run_action": ""
+    },
+    {
+        "press_key": "f21",
+        "run_action": ""
+    },
+    {
+        "press_key": "f22",
+        "run_action": "next media"
+    },
+    {
+        "press_key": "f23",
+        "run_action": ""
+    },
+    {
+        "press_key": "f24",
+        "run_action": "windows+l"
+    }
+]
