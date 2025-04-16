@@ -16,7 +16,7 @@
         "run_action": "media next"
     },
     {
-        "press_key": "PAUSE",
+        "press_key": "pause",
         "run_action": "windows+l"
     }
 ]

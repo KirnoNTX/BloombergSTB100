@@ -41,15 +41,44 @@ def load_cfg() -> list:
         print(f"[FAIL] Failed to load config file: {e}")
         return []
 
+def send_media_key(vk: int) -> None:
+    KEYEVENTF_KEYUP = 0x0002
+    try:
+        ctypes.windll.user32.keybd_event(vk, 0, 0, 0)
+        ctypes.windll.user32.keybd_event(vk, 0, KEYEVENTF_KEYUP, 0)
+        print(f"[OK] Media key {vk} sent")
+    except Exception as e:
+        print(f"[FAIL] Error sending media key {vk}: {e}")
+
 def run_action(action: str) -> None:
     if not action:
         print("[SKIP] Empty action, skipping.")
         return
+
     try:
-        print(f"[OK] Sending action: {action}")
-        keyboard.send(action)
+        action = action.lower().strip()
+        print(f"[OK] Handling action: {action}")
+
+        match action:
+            case "windows+l":
+                print("[OK] Locking workstation.")
+                ctypes.windll.user32.LockWorkStation()
+
+            case "play/pause media":
+                send_media_key(0xB3)
+
+            case "media next":
+                send_media_key(0xB0)
+
+            case "media previous":
+                send_media_key(0xB1)
+
+            case _:
+                print(f"[OK] Sending standard action via keyboard lib: {action}")
+                keyboard.send(action)
+
     except Exception as e:
-        print(f"[FAIL] Failed to send action '{action}': {e}")
+        print(f"[FAIL] Failed to handle action '{action}': {e}")
 
 def run_prog(path: str) -> None:
     try:
@@ -62,13 +91,11 @@ def run_prog(path: str) -> None:
 def on_press(event) -> None:
     print(f"[OK] Key pressed: {event.name}")
     for item in config:
-        if event.name == item.get("press_key"):
-            print(f"[OK] Matching key found: {event['press_key']}")
+        if event.name.lower() == item.get("press_key", "").lower():
+            print(f"[OK] Matching key found: {item['press_key']}")
             action = item.get("run_action", "")
             prog = item.get("run_prog", "")
-            
             if prog:
-                print(f"[OK] Launching program: {prog}")
                 run_prog(prog)
             elif action:
                 if item.get("programme_fenêtre_en_cours"):
@@ -79,7 +106,6 @@ def on_press(event) -> None:
                     else:
                         print(f"[FAIL] Active process mismatch: {proc} != {item['programme_fenêtre_en_cours']}")
                 else:
-                    print(f"[OK] Executing action: {action}")
                     run_action(action)
             else:
                 print("[SKIP] No action or program defined.")
@@ -117,13 +143,3 @@ config: list = load_cfg()
 keyboard.on_press(on_press)
 print("[OK] Listening for key presses. Press 'esc' to quit.")
 tray()
-
-if __name__ == "__main__":
-    try:
-        config: list = load_cfg()
-        keyboard.on_press(on_press)
-        print("[OK] Listening for key presses. Press 'esc' to quit.")
-        tray()
-    except Exception as e:
-        with open("error.log", "w") as f:
-            f.write(str(e))
