@@ -82,11 +82,16 @@ def run_action(action: str) -> None:
 
 def run_prog(path: str) -> None:
     try:
-        print(f"[OK] Launching program: {path}")
-        subprocess.Popen(path)
-        print(f"[OK] Program '{path}' launched successfully.")
+        if path.lower().startswith("url:"):
+            url = path[4:].strip()
+            print(f"[OK] Opening URL via shell: {url}")
+            subprocess.Popen(f'start {url}', shell=True)
+        else:
+            print(f"[OK] Launching program: {path}")
+            subprocess.Popen(path)
+        print(f"[OK] Program or URL '{path}' launched successfully.")
     except Exception as e:
-        print(f"[FAIL] Failed to launch program '{path}': {e}")
+        print(f"[FAIL] Failed to launch '{path}': {e}")
 
 def on_press(event) -> None:
     print(f"[OK] Key pressed: {event.name}")

@@ -1,11 +1,23 @@
 [
     {
+        "press_key": "f13",
+        "run_prog": "C:\\Program Files\\Everything\\Everything.exe"
+    },
+    {
         "press_key": "f14",
         "run_action": "media previous"
     },
     {
+        "press_key": "f15",
+        "run_prog": "url:https://status.2222.ovh"
+    },
+    {
         "press_key": "f16",
         "run_prog": "code.exe"
+    },
+    {
+        "press_key": "f17",
+        "run_prog": "url:https://pve.2222.ovh"
     },
     {
         "press_key": "f18",
@@ -20,8 +32,20 @@
         "run_action": "windows+shift+c"
     },
     {
+        "press_key": "f21",
+        "run_prog": "C:\\Users\\Kirno\\AppData\\Local\\DiscordPTB\\app-1.0.1137\\DiscordPTB.exe"
+    },
+    {
         "press_key": "f22",
         "run_action": "media next"
+    },
+    {
+        "press_key": "f23",
+        "run_prog": "url:https://npanel.natyx.net"
+    },
+    {
+        "press_key": "f24",
+        "run_prog": "url:https://natyx.net"
     },
     {
         "press_key": "pause",
