@@ -12,6 +12,14 @@
         "run_action": "play/pause media"
     },
     {
+        "press_key": "f19",
+        "run_action": "windows+shift+t"
+    },
+    {
+        "press_key": "f20",
+        "run_action": "windows+shift+c"
+    },
+    {
         "press_key": "f22",
         "run_action": "media next"
     },
