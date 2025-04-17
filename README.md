@@ -12,9 +12,9 @@
 |---------|----------------------------------------|
 | F13     | Launch [Everything](https://www.voidtools.com) Search |
 | F14     | Media: Previous Track                  |
-| F15     | Open my [Status](https://status.2222.ovh) page |
+| F15     | Open [Status](https://status.2222.ovh) page |
 | F16     | Launch Visual Studio Code              |
-| F17     | Open my [Proxmox](https://pve.2222.ovh) |
+| F17     | Open [Proxmox](https://pve.2222.ovh) |
 | F18     | Media: Play / Pause                    |
 | F19     | Simulate `Windows + Shift + T`         |
 | F20     | Simulate `Windows + Shift + C`         |
