@@ -1,7 +1,7 @@
 [
     {
         "press_key": "f13",
-        "run_prog": "C:\\Program Files\\Everything\\Everything.exe"
+        "run_action": "windows+alt+space"
     },
     {
         "press_key": "f14",
