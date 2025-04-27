@@ -18,7 +18,7 @@
 | F18     | Media: Play / Pause                    |
 | F19     | Simulate `Windows + Shift + T`         |
 | F20     | Simulate `Windows + Shift + C`         |
-| F21     | Launch Discord PTB                     |
+| F21     | Open [nMail](https://nmail.natyx.net) |
 | F22     | Media: Next Track                      |
 | F23     | Open [nPanel](https://npanel.natyx.net) |
 | F24     | Open [Natyx.net](https://natyx.net) |
