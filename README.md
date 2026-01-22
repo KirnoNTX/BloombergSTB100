@@ -43,3 +43,8 @@
     - Or reboot your PC if you chose the startup option
 
 The app will appear in the system tray and listen for your custom key mappings in the background.
+
+## 📈 Usage
+
+RAM : 23,5MB
+CPU : Like 0%
